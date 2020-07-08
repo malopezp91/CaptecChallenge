@@ -98,6 +98,43 @@ final class CalculatorTest {
     }
 
     @Test
+    public void calculator_addingTwoDifferentDigitsNumbersAndAddSymbolTwice_resetIsReturned() {
+        List<Item> values = ImmutableList.of(
+                new Item('6', "6"),
+                new Item('0', "60"),
+                new Item('+', "60"),
+                new Item('3', "3"),
+                new Item('+', "63"),
+                new Item('+', "0")
+        );
+
+        for (Item item : values) {
+            String result = calculator.process(item.getInput());
+            assertEquals(item.getResult(), result);
+        }
+    }
+
+    @Test
+    public void calculator_addingTwoDifferentNumbersAndAddSymbolTwiceAndNewAdding_resultIsReturned() {
+        List<Item> values = ImmutableList.of(
+                new Item('6', "6"),
+                new Item('+', "6"),
+                new Item('3', "3"),
+                new Item('+', "9"),
+                new Item('+', "0"),
+                new Item('4', "4"),
+                new Item('+', "4"),
+                new Item('7', "7"),
+                new Item('+', "11")
+        );
+
+        for (Item item : values) {
+            String result = calculator.process(item.getInput());
+            assertEquals(item.getResult(), result);
+        }
+    }
+
+    @Test
     public void calculator_insertingNumberOverflows_errorIsReturned() {
         List<Item> values = ImmutableList.of(
                 new Item('1', "1"),

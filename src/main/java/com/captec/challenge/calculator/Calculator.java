@@ -3,6 +3,7 @@ package com.captec.challenge.calculator;
 import static com.captec.challenge.calculator.Utils.ADD_CHAR;
 import static com.captec.challenge.calculator.Utils.DIGITS;
 import static com.captec.challenge.calculator.Utils.ERROR;
+import static com.captec.challenge.calculator.Utils.INITIAL_DISPLAY_LABEl;
 import static com.captec.challenge.calculator.Utils.VALID_SYMBOLS;
 
 /**
@@ -33,14 +34,19 @@ public class Calculator {
     }
 
     private void processAdd() {
-        try {
-            int result = Math.addExact(previousValue, currentValue);
-            previousValue = result;
-            currentValue = 0;
-            display = String.valueOf(result);
-        } catch (ArithmeticException e) {
+        if (currentValue == 0) {
             reset();
-            display = ERROR;
+            display = INITIAL_DISPLAY_LABEl;
+        } else {
+            try {
+                int result = Math.addExact(previousValue, currentValue);
+                previousValue = result;
+                currentValue = 0;
+                display = String.valueOf(result);
+            } catch (ArithmeticException e) {
+                reset();
+                display = ERROR;
+            }
         }
     }
 
