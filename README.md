@@ -15,7 +15,7 @@ java -version
 ```
 
 If executed successfully, you will see the installed version of Java in your computer. If it is higher than 1.8, procede to the next step. 
-Otherwise, follow the following tutorial to install Java:
+Otherwise, follow this tutorial to install Java:
 https://medium.com/w-logs/installing-java-11-on-macos-with-homebrew-7f73c1e9fadf
 
 ## Execution
