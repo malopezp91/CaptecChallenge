@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 import static com.captec.challenge.calculator.Utils.APP_TITLE;
+import static com.captec.challenge.calculator.Utils.CALCULATOR_INSTRUCTIONS;
 import static com.captec.challenge.calculator.Utils.DEFAULT_CHAR;
 import static com.captec.challenge.calculator.Utils.ESCAPE_CHAR;
 import static com.captec.challenge.calculator.Utils.INITIAL_DISPLAY_LABEl;
@@ -24,7 +25,8 @@ public class App {
 
         Calculator calculator = new Calculator();
         System.out.println(APP_TITLE);
-        System.out.println(formatOutput(INITIAL_DISPLAY_LABEl));
+        System.out.println(CALCULATOR_INSTRUCTIONS);
+        System.out.println(formatOutput(INITIAL_DISPLAY_LABEl, '-'));
 
         /*
         jline3 used for a more seamless user experience
@@ -42,7 +44,7 @@ public class App {
             String result = calculator.process(inputValue);
             // Only non null results are displayed to console
             if (Objects.nonNull(result)) {
-                System.out.println(formatOutput(result));
+                System.out.println(formatOutput(result, inputValue));
             }
         }
 
