@@ -38,6 +38,15 @@ final class CalculatorTest {
     }
 
     @Test
+    public void calculator_processClearSymbol_zeroIsReturned() {
+        char input = 'C';
+
+        String response = calculator.process(input);
+
+        assertEquals("0", response);
+    }
+
+    @Test
     public void calculator_input3DigitNumber_fullNumberIsReturned() {
         List<Item> values = ImmutableList.of(
                 new Item('4', "4"),
@@ -58,6 +67,21 @@ final class CalculatorTest {
                 new Item('5', "45"),
                 new Item('6', "456"),
                 new Item('+', "456")
+        );
+
+        for (Item item : values) {
+            String result = calculator.process(item.getInput());
+            assertEquals(item.getResult(), result);
+        }
+    }
+
+    @Test
+    public void calculator_input3DigitNumberAndClearSymbol_resetIsReturned() {
+        List<Item> values = ImmutableList.of(
+                new Item('4', "4"),
+                new Item('5', "45"),
+                new Item('6', "456"),
+                new Item('C', "0")
         );
 
         for (Item item : values) {
@@ -115,6 +139,23 @@ final class CalculatorTest {
     }
 
     @Test
+    public void calculator_addingTwoDifferentDigitsNumbersThenAddSymbolThenClearSymbol_resetIsReturned() {
+        List<Item> values = ImmutableList.of(
+                new Item('6', "6"),
+                new Item('0', "60"),
+                new Item('+', "60"),
+                new Item('3', "3"),
+                new Item('+', "63"),
+                new Item('C', "0")
+        );
+
+        for (Item item : values) {
+            String result = calculator.process(item.getInput());
+            assertEquals(item.getResult(), result);
+        }
+    }
+
+    @Test
     public void calculator_addingTwoDifferentNumbersAndAddSymbolTwiceAndNewAdding_resultIsReturned() {
         List<Item> values = ImmutableList.of(
                 new Item('6', "6"),
@@ -122,6 +163,26 @@ final class CalculatorTest {
                 new Item('3', "3"),
                 new Item('+', "9"),
                 new Item('+', "0"),
+                new Item('4', "4"),
+                new Item('+', "4"),
+                new Item('7', "7"),
+                new Item('+', "11")
+        );
+
+        for (Item item : values) {
+            String result = calculator.process(item.getInput());
+            assertEquals(item.getResult(), result);
+        }
+    }
+
+    @Test
+    public void calculator_addingTwoDifferentNumbersAndClearSymbolAndNewAdding_resultIsReturned() {
+        List<Item> values = ImmutableList.of(
+                new Item('6', "6"),
+                new Item('+', "6"),
+                new Item('3', "3"),
+                new Item('+', "9"),
+                new Item('C', "0"),
                 new Item('4', "4"),
                 new Item('+', "4"),
                 new Item('7', "7"),

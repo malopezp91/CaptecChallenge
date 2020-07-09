@@ -1,6 +1,7 @@
 package com.captec.challenge.calculator;
 
 import static com.captec.challenge.calculator.Utils.ADD_CHAR;
+import static com.captec.challenge.calculator.Utils.CLEAR_CHAR;
 import static com.captec.challenge.calculator.Utils.DIGITS;
 import static com.captec.challenge.calculator.Utils.ERROR;
 import static com.captec.challenge.calculator.Utils.INITIAL_DISPLAY_LABEl;
@@ -28,8 +29,13 @@ public class Calculator {
     }
 
     private void processSymbol(char symbol) {
-        if (ADD_CHAR == symbol) {
-            processAdd();
+        switch (symbol) {
+            case ADD_CHAR:
+                processAdd();
+                break;
+            case CLEAR_CHAR:
+                processClear();
+                break;
         }
     }
 
@@ -48,6 +54,11 @@ public class Calculator {
                 display = ERROR;
             }
         }
+    }
+
+    private void processClear() {
+        reset();
+        display = INITIAL_DISPLAY_LABEl;
     }
 
     private void processDigit(char digit) {
