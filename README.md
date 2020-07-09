@@ -40,7 +40,8 @@ This will start the Calculator Application. In order to exit the current process
 ``` bash
 mvn clean test
 ```
-![Uploading Screen Shot 2020-07-09 at 00.00.10.png…]()
+<img width="771" alt="Screen Shot 2020-07-09 at 00 00 10" src="https://user-images.githubusercontent.com/23660935/86999092-64861800-c177-11ea-917a-c9836283a885.png">
+
 
 
 ## Further developing
